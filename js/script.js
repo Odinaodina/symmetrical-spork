@@ -57,7 +57,7 @@ for (let i = 0; i < tabsItem.length; i++) {
 
 const timerBtn = document.querySelector(".stopwatch__btn");
 const timerSeconds = document.querySelector(".stopwatch__seconds");
-
+const light = document.querySelector(".tabsLink__span")
 function timer() {
   let timeout;
   let seconds = 0;
@@ -74,12 +74,16 @@ function timer() {
 
   timerBtn.addEventListener("click", () => {
     if (timerBtn.innerHTML === "start") {
+      light.classList.add("active")
       timerBtn.innerHTML = "stop";
       sec();
     } else if (timerBtn.innerHTML === "stop") {
+      light.classList.add("active_clear")
       clearTimeout(timeout);
       timerBtn.innerHTML = "clear";
     } else if (timerBtn.innerHTML === "clear") {
+      light.classList.remove("active")
+      light.classList.remove("active_clear")
       clearTimeout(timeout);
       seconds = 0;
       timerSeconds.innerHTML = "00";
